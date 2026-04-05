@@ -9,7 +9,7 @@ export default function handler(req, res) {
     return res.status(200).end();
   }
 
-  // تجاهل طلبات التتبع لمنع تعطل السيرفر
+  // تجاهل طلبات التتبع
   if (req.url && req.url.includes('/rb_')) {
     return res.status(200).send('ok');
   }
@@ -24,9 +24,9 @@ export default function handler(req, res) {
   const url = req.url;
 
   // =========================================================================
-  // 2. الرد على طلب "الفئات" (Categories)
+  // 1. الرد على طلب "الفئات" (Categories)
   // =========================================================================
-  if (url.includes('/certificates/categories') && !url.includes('/types')) {
+  if (url.includes('/certificates/categories') && !url.includes('/types') && !url.includes('/dynamic-fields')) {
     return res.status(200).json({
       "status": {
         "code": "I000000",
@@ -48,9 +48,9 @@ export default function handler(req, res) {
   }
 
   // =========================================================================
-  // 3. الرد على طلب "الأنواع" (Types)
+  // 2. الرد على طلب "الأنواع" (Types)
   // =========================================================================
-  if (url.includes('/types')) {
+  if (url.includes('/types') && !url.includes('/dynamic-fields')) {
     return res.status(200).json({
       "status": {
         "code": "I000000",
@@ -74,10 +74,46 @@ export default function handler(req, res) {
   }
 
   // =========================================================================
-  // 4. الرد الافتراضي: إرسال شهادة الـ PDF عند إتمام عملية البحث بنجاح
+  // 3. الرد على طلب "الحقول الديناميكية" (Dynamic Fields) مربعات الإدخال
+  // =========================================================================
+  if (url.includes('/dynamic-fields')) {
+    return res.status(200).json({
+      "status": {
+        "code": "I000000",
+        "type": "SUCCESS",
+        "desc": "success",
+        "sessionReference": "SSDVS0040505499c2846257514478e944b552e30af2ec4",
+        "requestReference": "05707745477747157976"
+      },
+      "response": {
+        "dynamicFields": [
+          {
+            "orderIndex": 1,
+            "index": "57557647786962434f53493d",
+            "type": "text",
+            "minWidth": 5,
+            "maxWidth": 100,
+            "required": true,
+            "label": "الرقم المرجعي"
+          },
+          {
+            "orderIndex": 2,
+            "index": "7a6e394d30396b66424a383d",
+            "type": "text",
+            "required": true,
+            "label": " رقم CIF"
+          }
+        ]
+      },
+      "successfulResponse": true
+    });
+  }
+
+  // =========================================================================
+  // 4. الرد النهائي عند الضغط على "بحث" (إرسال الـ PDF)
   // =========================================================================
   
-  // ⚠️ استبدل هذا النص الطويل بكود الـ Base64 الخاص بشهادتك الحقيقية
+  // ⚠️ ضع كود الـ Base64 الخاص بشهادتك الحقيقية هنا
   const myPdfBase64 = "JVBERi0xLjAKMSAwIG9iago8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFI+PgplbmRvYmoKMiAwIG9iago8PC9UeXBlL1BhZ2VzL0tpZHNbMyAwIFJdL0NvdW50IDE+PgplbmRvYmoKMyAwIG9iago8PC9UeXBlL1BhZ2UvTWVkaWFCb3hbMCAwIDU5NSA4NDJdL1BhcmVudCAyIDAgUj4+CmVuZG9iago0IDAgb2JqCjw8L1R5cGUvWFJlZi9TaXplIDQvV1sxIDIgMV0vUm9vdCAxIDAgUi9JbmRleFswIDRdPj4Kc3RyZWFtCgH//wAAAAMAAgEAAAAEAAIBAgAAAAgAAgEEAAAACgABAAoAAQANZW5kc3RyZWFtCmVuZG9iagpzdGFydHhyZWYKNzAKJSVFT0YK";
 
   return res.status(200).json({
