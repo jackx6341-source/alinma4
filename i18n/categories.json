@@ -1,0 +1,30 @@
+{
+    "status": {
+        "code": "I000000",
+        "type": "SUCCESS",
+        "desc": "success",
+        "sessionReference": "SSDVS00404011126ef92cf3377450893d7894a5615e064",
+        "requestReference": "07502143572517871923"
+    },
+    "response": {
+        "certificationsCategories": [
+            {
+                "code": "71705566694559454d53773d",
+                "desc": "أفراد"
+            },
+            {
+                "code": "7643562b5a484a316f71733d",
+                "desc": "الشركات"
+            },
+            {
+                "code": "59666667427850643234513d",
+                "desc": "تخطيط موارد المؤسسة"
+            },
+            {
+                "code": "4162786c6a594a463534493d",
+                "desc": "تأجير السيارات التمويلي"
+            }
+        ]
+    },
+    "successfulResponse": true
+}

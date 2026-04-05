@@ -1,0 +1,18 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/search",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    { "source": "/alinma-apim/(.*)", "destination": "/api/auth" },
+    { "source": "/alinma-api/(.*)", "destination": "/api/auth" },
+    { "source": "/rb_(.*)", "destination": "/api/auth" },
+    { "source": "/assets/i18n/(.*)", "destination": "/api/assets" },
+    { "source": "/search", "destination": "/search.html" },
+    { "source": "/(.*)", "destination": "/search.html" }
+  ]
+}

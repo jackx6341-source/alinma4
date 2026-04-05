@@ -1,0 +1,34 @@
+{
+  "app": {
+    "title": "Digital Accredited Certifications"
+  },
+  "header": {
+    "toLang": "عربي",
+    "toLangMobile": "ع"
+  },
+  "footer": {
+    "copyrights": "Alinma Bank | A Saudi Joint Stock Company | Regulated by the Saudi Central Bank | C.R. 1010250808 | Capital - SAR 25,000,000,000<br class=\"hidden sm:inline\"/>Tel. +966112185555 | www.alinma.com 9033 King Fahad Road | Olaya | Unit 8 | Riyadh 12214 - 2370"
+  },
+  "search": {
+    "title": "Search for a Digital Accredited Certifications",
+    "form": {
+      "requiredHint": "asterisk indicates required fields",
+      "labels": {
+        "serviceType": "Service Type",
+        "certificationType": "Digital Accredited Certifications Type",
+        "select": "Select"
+      },
+      "buttons": {
+        "search": "Search",
+        "clear": "Clear"
+      }
+    },
+    "result": {
+      "title": "Search Result",
+      "buttons": {
+        "preview": "Print / Preview",
+        "save": "Save File"
+      }
+    }
+  }
+}
